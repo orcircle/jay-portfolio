@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-800 overflow-hidden;
+  }
+
+  /* 隐藏所有滚动条 */
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors;
+  }
+
+  .nav-link {
+    @apply text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+
+  /* 自定义滚动捕捉 */
+  .snap-container {
+    @apply h-screen overflow-y-auto;
+    scroll-snap-type: y proximity;
+  }
+
+  .snap-section {
+    @apply h-screen min-h-screen;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-top: 0;
+  }
+
+  /* 强制滚动到下一页的阈值 */
+  .snap-section::after {
+    content: '';
+    display: block;
+    height: 20%;
+    scroll-snap-align: start;
+  }
+}

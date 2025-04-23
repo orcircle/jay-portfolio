@@ -1,0 +1,117 @@
+{
+  "profile": {
+    "title": "Jay Yuan",
+    "subtitle": "Full Stack Engineer | Technical Expert",
+    "about": {
+      "title": "About Me",
+      "description": "I am a passionate full-stack engineer with extensive experience in web application development. I focus on building high-performance, scalable modern applications and am committed to delivering exceptional user experiences.",
+      "experience": "In past projects, I have successfully delivered multiple large-scale enterprise applications across various domains including e-commerce, finance, and education. I excel at team collaboration, quickly adapt to new technologies, and maintain strict code quality standards."
+    },
+    "skills": {
+      "frontend": {
+        "title": "Frontend Development",
+        "description": "Proficient in modern frontend development technologies, skilled in building high-performance, responsive user interfaces.",
+        "items": {
+          "react": {
+            "name": "React",
+            "level": 90,
+            "description": "Proficient in React development, familiar with Hooks, Context API, and other advanced features"
+          },
+          "typescript": {
+            "name": "TypeScript",
+            "level": 85,
+            "description": "Skilled in TypeScript for type-safe frontend development"
+          },
+          "vue": {
+            "name": "Vue.js",
+            "level": 80,
+            "description": "Familiar with Vue 2/3 development, understanding its core principles"
+          },
+          "css": {
+            "name": "CSS/SCSS",
+            "level": 95,
+            "description": "Expert in CSS and preprocessors, skilled in responsive design and animations"
+          }
+        }
+      },
+      "backend": {
+        "title": "Backend Development",
+        "description": "Solid backend development capabilities, able to design and implement efficient, scalable server-side applications.",
+        "items": {
+          "nodejs": {
+            "name": "Node.js",
+            "level": 90,
+            "description": "Proficient in Node.js development, familiar with Express, Koa, and other frameworks"
+          },
+          "python": {
+            "name": "Python",
+            "level": 85,
+            "description": "Skilled in Python for backend development, familiar with Django, Flask"
+          },
+          "database": {
+            "name": "Database",
+            "level": 88,
+            "description": "Familiar with MySQL, MongoDB, Redis, and other databases"
+          },
+          "microservices": {
+            "name": "Microservices",
+            "level": 80,
+            "description": "Understanding of microservices architecture and containerization technologies"
+          }
+        }
+      },
+      "cloud": {
+        "title": "Cloud Services",
+        "description": "Familiar with cloud service architecture, capable of system deployment, monitoring, and optimization.",
+        "items": {
+          "aws": {
+            "name": "AWS",
+            "level": 85,
+            "description": "Familiar with AWS core services such as EC2, S3, Lambda, etc."
+          },
+          "docker": {
+            "name": "Docker",
+            "level": 90,
+            "description": "Proficient in Docker containerization technology, familiar with Docker Compose"
+          },
+          "cicd": {
+            "name": "CI/CD",
+            "level": 88,
+            "description": "Familiar with Jenkins, GitHub Actions, and other CI/CD tools"
+          },
+          "devops": {
+            "name": "DevOps",
+            "level": 82,
+            "description": "Understanding of DevOps concepts and practices"
+          }
+        }
+      }
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Hi, I'm Jay",
+    "subtitle": "Full Stack Developer",
+    "description": "I build beautiful and functional web applications"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am a passionate developer with experience in building modern web applications using React, Node.js, and other cutting-edge technologies."
+  },
+  "projects": {
+    "title": "My Projects",
+    "view": "View Project"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  }
+} 
