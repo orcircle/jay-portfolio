@@ -1,156 +1,91 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Profile from './pages/Profile';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
+import About from './pages/About';
 import Contact from './pages/Contact';
-import GlassCard from './components/GlassCard';
 import './App.css';
-
-const Home: React.FC = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center pt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="text-center md:text-center">
-            <h1 className="text-6xl font-bold mb-4 gradient-text">你好，我是袁杰</h1>
-            <p className="text-2xl text-gray-300 mb-8">高级软件工程师</p>
-          </div>
-          <GlassCard className="p-8">
-            <h2 className="text-2xl font-bold mb-4 gradient-text">关于我</h2>
-            <p className="text-gray-300 mb-6">
-              我是一名热爱技术的高级软件工程师，专注于构建现代化的Web应用。
-              拥有丰富的React、Node.js和TypeScript开发经验，致力于创造高效、可维护的代码。
-            </p>
-            <div className="space-y-4">
-              <div>
-                <p className="text-gray-400">主要技能</p>
-                <p className="text-white">React, TypeScript, Node.js, MongoDB</p>
-              </div>
-              <div>
-                <p className="text-gray-400">开发理念</p>
-                <p className="text-white">注重代码质量，追求最佳实践</p>
-              </div>
-            </div>
-          </GlassCard>
-        </div>
-      </div>
-    </div>
-  );
-};
+import './styles/nprogress.css';
 
 const App: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white">
-        {/* 导航栏 */}
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <div className="flex-shrink-0">
-                <Link to="/" className="text-xl font-bold gradient-text">
-                  袁杰
-                </Link>
-              </div>
-              <div className="hidden md:block">
-                <div className="flex space-x-4">
-                  <Link to="/" className="nav-link">个人资料</Link>
-                  <Link to="/portfolio" className="nav-link">作品集</Link>
-                  <Link to="/contact" className="nav-link">联系我</Link>
-                </div>
-              </div>
-              {/* 移动端菜单按钮 */}
-              <div className="md:hidden">
-                <button
-                  type="button"
-                  onClick={toggleMenu}
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                  aria-controls="mobile-menu"
-                  aria-expanded={isMenuOpen}
-                >
-                  <span className="sr-only">打开主菜单</span>
-                  {/* 汉堡菜单图标 */}
-                  <svg
-                    className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                  {/* 关闭菜单图标 */}
-                  <svg
-                    className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-          {/* 移动端菜单 */}
-          <div
-            className={`md:hidden transition-all duration-300 ease-in-out ${
-              isMenuOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-            }`}
-            id="mobile-menu"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link
-                to="/"
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              >
-                个人资料
-              </Link>
-              <Link
-                to="/portfolio"
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              >
-                作品集
-              </Link>
-              <Link
-                to="/contact"
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              >
-                联系我
-              </Link>
-            </div>
-          </div>
-        </nav>
+      <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 text-white min-h-screen overflow-hidden">
+        {/* 背景形状 - 固定定位 */}
+        <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          {/* 圆形 */}
+          <div 
+            className="absolute top-[30%] left-[20%] w-[300px] h-[300px] bg-secondary/30 rounded-full blur-2xl animate-circle"
+          ></div>
+          
+          {/* 三角形 */}
+          <div 
+            className="absolute top-[60%] right-[25%] animate-triangle blur-2xl"
+            style={{
+              width: 0,
+              height: 0,
+              borderLeft: '150px solid transparent',
+              borderRight: '150px solid transparent',
+              borderBottom: '260px solid rgba(var(--color-primary-rgb), 0.3)'
+            }}
+          ></div>
 
-        {/* 路由内容 */}
-        <div className="pt-16">
-          <Routes>
-            <Route path="/" element={<Profile />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+          {/* 方形 */}
+          <div 
+            className="absolute top-[40%] left-[60%] w-[200px] h-[200px] bg-primary/30 rotate-45 blur-2xl animate-square"
+          ></div>
+
+          {/* 小圆点1 */}
+          <div 
+            className="absolute top-[20%] right-[40%] w-[100px] h-[100px] bg-accent/30 rounded-full blur-xl animate-dot"
+          ></div>
+
+          {/* 小圆点2 */}
+          <div 
+            className="absolute bottom-[30%] left-[40%] w-[80px] h-[80px] bg-secondary/30 rounded-full blur-xl animate-dot"
+            style={{ animationDelay: '-10s' }}
+          ></div>
+
+          {/* 小圆点3 */}
+          <div 
+            className="absolute top-[50%] right-[15%] w-[120px] h-[120px] bg-primary/30 rounded-full blur-xl animate-dot"
+            style={{ animationDelay: '-20s' }}
+          ></div>
+        </div>
+        
+        {/* 毛玻璃效果层 */}
+        <div className="fixed inset-0 backdrop-blur-[80px] pointer-events-none"></div>
+        
+        {/* 内容 */}
+        <div className="relative z-10">
+          <div className="fixed top-0 left-0 right-0 z-50">
+            <Navbar />
+          </div>
+          <main className="px-4 md:px-12 lg:px-24">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </main>
+        </div>
+
+        <div className="fixed inset-0 -z-10 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full animate-circle" />
+          <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full animate-circle" style={{ animationDelay: '-5s' }} />
+          <div className="absolute bottom-1/4 left-1/3 w-32 h-32 bg-pink-500/10 rounded-full animate-circle" style={{ animationDelay: '-10s' }} />
+          
+          <div className="absolute top-1/2 left-1/2 w-0 h-0 border-l-[50px] border-r-[50px] border-b-[86.6px] border-l-transparent border-r-transparent border-b-purple-500/10 animate-triangle" />
+          <div className="absolute bottom-1/3 right-1/3 w-0 h-0 border-l-[30px] border-r-[30px] border-b-[52px] border-l-transparent border-r-transparent border-b-blue-500/10 animate-triangle" style={{ animationDelay: '-7s' }} />
+          
+          <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-green-500/10 rotate-45 animate-square" />
+          <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-yellow-500/10 rotate-45 animate-square" style={{ animationDelay: '-15s' }} />
+          
+          <div className="absolute top-1/3 left-1/3 w-4 h-4 bg-red-500/10 rounded-full animate-dot" />
+          <div className="absolute bottom-1/3 right-1/3 w-6 h-6 bg-indigo-500/10 rounded-full animate-dot" style={{ animationDelay: '-12s' }} />
+          <div className="absolute top-1/2 right-1/2 w-3 h-3 bg-teal-500/10 rounded-full animate-dot" style={{ animationDelay: '-8s' }} />
         </div>
       </div>
     </Router>

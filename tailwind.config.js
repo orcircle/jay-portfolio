@@ -1,4 +1,4 @@
- /** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 export default {
     content: [
       "./index.html",
@@ -13,7 +13,8 @@ export default {
           light: "#F9FAFB",
         },
         fontFamily: {
-          sans: ['Inter', 'sans-serif'],
+          sans: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
+          apple: ['SF Pro Display', 'system-ui', 'sans-serif'],
         },
       },
     },
