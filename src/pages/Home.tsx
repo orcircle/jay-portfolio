@@ -61,7 +61,7 @@ const Home: React.FC = () => {
           
           <div className="flex flex-col md:flex-row gap-8">
             {/* 左侧个人信息卡片 */}
-            <GlassCard className="p-8 md:w-1/3">
+            <GlassCard className="p-8 md:w-[25%]">
               <div className="flex flex-col items-center gap-8">
                 {/* 头像部分 */}
                 <motion.div
@@ -96,8 +96,8 @@ const Home: React.FC = () => {
             </GlassCard>
 
             {/* 右侧介绍卡片 */}
-              <AboutCard />
-                        </div>
+            <AboutCard className="md:w-[75%]"/>
+          </div>
         </motion.div>
 
         {/* 技术栈 */}

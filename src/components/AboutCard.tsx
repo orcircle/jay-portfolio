@@ -1,9 +1,13 @@
 import React from 'react';
 import GlassCard from './GlassCard';
 
-const AboutCard: React.FC = () => {
+interface AboutCardProps {
+  className?: string;
+}
+
+const AboutCard: React.FC<AboutCardProps> = ({ className = '' }) => {
   return (
-    <GlassCard className="p-8">
+    <GlassCard className={`p-8 ${className}`}>
       <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
         个人优势
       </h2>
