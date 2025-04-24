@@ -1,14 +1,5 @@
-# Sample workflow for building and deploying a VitePress site to GitHub Pages
-#
-# To get started with VitePress see: https://vitepress.dev/guide/getting-started
-#
-# To configure this workflow:
-#
-# 1. Set up remote repository access as described in https://github.com/marketplace/actions/github-pages
-# 2. Customize the site name below by replacing `your-site-name` with your repository's name
-# 3. (Optional) Configure the domain name of your site in GitHub through Settings > Pages > Custom Domain
-#
-name: Deploy VitePress site to Pages
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -36,45 +27,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            .npm
-            **/node_modules
-          key: ${{ runner.os }}-${{ steps.detect-package-manager.outputs.manager }}-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ steps.detect-package-manager.outputs.manager }}-
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with Vite
-        run: ${{ steps.detect-package-manager.outputs.runner }} vite build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
           path: './dist'
 
