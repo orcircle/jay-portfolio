@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
@@ -58,11 +59,11 @@ const App: React.FC = () => {
         <div className="fixed inset-0 backdrop-blur-[80px] pointer-events-none"></div>
         
         {/* 内容 */}
-        <div className="relative z-10">
+        <div className="relative z-10 flex flex-col min-h-screen">
           <div className="fixed top-0 left-0 right-0 z-50">
             <Navbar />
           </div>
-          <main className="px-4 md:px-12 lg:px-24">
+          <main className="flex-grow px-4 md:px-12 lg:px-24 pt-16">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/portfolio" element={<Portfolio />} />
@@ -70,6 +71,7 @@ const App: React.FC = () => {
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
+          <Footer />
         </div>
 
         <div className="fixed inset-0 -z-10 overflow-hidden">

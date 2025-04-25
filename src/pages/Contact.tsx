@@ -5,17 +5,18 @@ import GlassCard from '../components/GlassCard';
 
 const Contact: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-16">
       <div className="flex flex-col gap-8">
         {/* 联系方式 */}
         <div className="text-center">
           <Title>联系我</Title>
-          <Subtitle className="text-xl md:text-2xl">联系方式</Subtitle>
         </div>
 
         {/* 联系表单 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <GlassCard className="p-6">
+          <Subtitle className="text-xl md:text-2xl mb-4 font-bold">联系方式</Subtitle>
+
             <div className="space-y-6">
               <div>
                 <h4 className="text-lg font-semibold mb-2">邮箱</h4>
