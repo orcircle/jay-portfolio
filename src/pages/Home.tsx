@@ -83,7 +83,7 @@ const Home: React.FC = () => {
                   viewport={{ once: true }}
                   className="w-full"
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-wrap justify-between gap-4">
                     {basicInfo.map((item, index) => (
                       <div key={index} className="flex flex-col">
                         <span className="text-gray-400 text-sm font-medium">{item.label}</span>

@@ -21,5 +21,5 @@ export default defineConfig({
     cors: true,
     allowedHosts: ['szv0279', 'localhost', '127.0.0.1'],
   },
-  base: '/jay-portfolio/',
+  base: '/jay-portfolio',
 })
