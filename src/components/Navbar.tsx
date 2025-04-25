@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
                     e.preventDefault();
                     handleNavigation(path);
                   }}
-                  className={`nav-link ${isActive(path) ? 'text-primary' : ''}`}
+                  className={`nav-link ${isActive(path) ? 'text-primary' : ''} text-white`}
                 >
                   {path === '/' && '个人资料'}
                   {path === '/portfolio' && '作品集'}

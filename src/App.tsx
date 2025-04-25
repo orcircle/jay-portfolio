@@ -10,7 +10,7 @@ import './styles/nprogress.css';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename="/jay-portfolio">
       <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 text-white min-h-screen overflow-hidden">
         {/* 背景形状 - 固定定位 */}
         <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
