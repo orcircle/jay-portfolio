@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import Title from '../components/Title';
 import Subtitle from '../components/Subtitle';
 import AboutCard from '../components/AboutCard';
@@ -7,48 +8,119 @@ import GlassCard from '../components/GlassCard';
 import Typewriter from '../components/Typewriter';
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isScrolling = useRef(false);
+  const touchStartY = useRef(0);
+
   const basicInfo = [
-    { label: '姓名', value: '袁杰' },
-    { label: '性别', value: '男' },
-    { label: '年龄', value: '24岁' },
-    { label: '籍贯', value: '苏州' },
-    { label: '政治面貌', value: '非党员' },
-    { label: '微信号', value: '19522716628' },
-    { label: '邮箱', value: 'yuanjie1224@gmail.com' }
+    { label: t('basicInfo.name'), value: t('values.name') },
+    { label: t('basicInfo.gender'), value: t('values.gender') },
+    { label: t('basicInfo.age'), value: new Date().getFullYear() - 1999},
+    { label: t('basicInfo.hometown'), value: t('values.hometown') },
+    { label: t('basicInfo.wechat'), value: t('values.wechat') },
+    { label: t('basicInfo.email'), value: t('values.email') },
+    { label: t('basicInfo.worktime'), value: `${new Date().getFullYear() - 2022}${t('basicUnit.year')}` }
   ];
 
   const skills = [
-    { label: '后端技术', value: 'JavaSE, JavaEE, SpringBoot, SpringCloud, Mybatis, Redis, MQ' },
-    { label: '前端技术', value: 'JavaScript, Vue, React, ReactNative, Flutter, TypeScript' },
-    { label: '运维能力', value: 'Linux, Docker, AWS, Azure, 阿里云' }
+    { label: t('skills.backend'), value: 'JavaSE, JavaEE, SpringBoot, SpringCloud, Mybatis, Redis, MQ' },
+    { label: t('skills.frontend'), value: 'JavaScript, Vue, React, ReactNative, Flutter, TypeScript' },
+    { label: t('skills.devops'), value: 'Linux, Docker, AWS, Azure, 阿里云' }
   ];
 
+  const scrollToSection = (targetY: number) => {
+    if (isScrolling.current) return;
+    
+    isScrolling.current = true;
+    window.scrollTo({
+      top: targetY,
+      behavior: 'smooth'
+    });
+    
+    setTimeout(() => {
+      isScrolling.current = false;
+    }, 1000);
+  };
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (isScrolling.current) return;
+      
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      
+      // 如果在第一屏（0px）向下滚动
+      if (scrollPosition < viewportHeight / 2 && e.deltaY > 0) {
+        e.preventDefault();
+        scrollToSection(viewportHeight);
+      }
+      // 如果在第二屏顶部（100vh）向上滚动
+      else if (scrollPosition > viewportHeight / 2 && e.deltaY < 0) {
+        e.preventDefault();
+        scrollToSection(0);
+      }
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (isScrolling.current) return;
+      
+      const touchEndY = e.changedTouches[0].clientY;
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const deltaY = touchEndY - touchStartY.current;
+      
+      // 如果在第一屏（0px）向下滑动
+      if (scrollPosition < viewportHeight / 2 && deltaY < -50) {
+        scrollToSection(viewportHeight);
+      }
+      // 如果在第二屏顶部（100vh）向上滑动
+      else if (scrollPosition > viewportHeight / 2 && deltaY > 50) {
+        scrollToSection(0);
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, []);
+
   return (
-    <div className="container mx-auto">
-      <div className="flex flex-col">
-        {/* 标题部分 */}
+    <div className="min-h-screen">
+      {/* 标题部分 */}
+      <div className="h-screen flex items-center justify-center">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center h-screen flex flex-col justify-center"
+          className="text-center"
         >
-          <Title className="whitespace-nowrap text-[clamp(2rem,5vw,4rem)]">你好，我是袁杰</Title>
+          <Title className="whitespace-nowrap text-[clamp(2rem,5vw,4rem)]">{t('greeting')}</Title>
           <Subtitle className="text-xl md:text-2xl">
             <Typewriter
               words={[
-                '前端开发工程师',
-                'UI/UX 设计师',
-                '创意工作者',
-                '终身学习者'
+                t('roles.frontend'),
+                t('roles.uiux'),
+                t('roles.creative'),
+                t('roles.learner')
               ]}
             />
           </Subtitle>
-          {/* 背景装饰 */}
-          <div className="bg-primary/10 rounded-full"></div>
-          <div className="bg-secondary/10 rounded-full"></div>
         </motion.div>
+      </div>
 
+      {/* 内容部分 */}
+      <div ref={contentRef} className="min-h-screen mt-16">
         {/* 个人信息和介绍 */}
         <motion.div 
           initial={{ opacity: 0 }}
@@ -57,7 +129,7 @@ const Home: React.FC = () => {
           viewport={{ once: true }}
           className="flex flex-col gap-8 px-4 py-8"
         >
-          <Title className="text-3xl md:text-4xl mb-8 text-center">关于我</Title>
+          <Title className="text-3xl md:text-4xl mb-8 text-center">{t('about')}</Title>
           
           <div className="flex flex-col md:flex-row gap-8">
             {/* 左侧个人信息卡片 */}
@@ -108,7 +180,7 @@ const Home: React.FC = () => {
           viewport={{ once: true }}
           className="p-6 rounded-lg"
         >
-          <Title className="text-3xl md:text-4xl mb-4">技术栈</Title>
+          <Title className="text-3xl md:text-4xl mb-4">{t('skills.title')}</Title>
           <GlassCard className="p-6">
             <div className="space-y-4">
               {skills.map((item, index) => (

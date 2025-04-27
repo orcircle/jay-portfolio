@@ -12,7 +12,7 @@ import './styles/nprogress.css';
 const App: React.FC = () => {
   return (
     <Router basename="/jay-portfolio">
-      <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 text-white min-h-screen overflow-hidden">
+      <div className="relative min-h-screen overflow-hidden">
         {/* 背景形状 - 固定定位 */}
         <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           {/* 圆形 */}
@@ -55,15 +55,12 @@ const App: React.FC = () => {
           ></div>
         </div>
         
-        {/* 毛玻璃效果层 */}
-        <div className="fixed inset-0 backdrop-blur-[80px] pointer-events-none"></div>
-        
         {/* 内容 */}
         <div className="relative z-10 flex flex-col min-h-screen">
           <div className="fixed top-0 left-0 right-0 z-50">
             <Navbar />
           </div>
-          <main className="flex-grow px-4 md:px-12 lg:px-24 pt-16">
+          <main className="flex-grow px-4 md:px-12 lg:px-24">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/portfolio" element={<Portfolio />} />
@@ -72,22 +69,6 @@ const App: React.FC = () => {
             </Routes>
           </main>
           <Footer />
-        </div>
-
-        <div className="fixed inset-0 -z-10 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full animate-circle" />
-          <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full animate-circle" style={{ animationDelay: '-5s' }} />
-          <div className="absolute bottom-1/4 left-1/3 w-32 h-32 bg-pink-500/10 rounded-full animate-circle" style={{ animationDelay: '-10s' }} />
-          
-          <div className="absolute top-1/2 left-1/2 w-0 h-0 border-l-[50px] border-r-[50px] border-b-[86.6px] border-l-transparent border-r-transparent border-b-purple-500/10 animate-triangle" />
-          <div className="absolute bottom-1/3 right-1/3 w-0 h-0 border-l-[30px] border-r-[30px] border-b-[52px] border-l-transparent border-r-transparent border-b-blue-500/10 animate-triangle" style={{ animationDelay: '-7s' }} />
-          
-          <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-green-500/10 rotate-45 animate-square" />
-          <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-yellow-500/10 rotate-45 animate-square" style={{ animationDelay: '-15s' }} />
-          
-          <div className="absolute top-1/3 left-1/3 w-4 h-4 bg-red-500/10 rounded-full animate-dot" />
-          <div className="absolute bottom-1/3 right-1/3 w-6 h-6 bg-indigo-500/10 rounded-full animate-dot" style={{ animationDelay: '-12s' }} />
-          <div className="absolute top-1/2 right-1/2 w-3 h-3 bg-teal-500/10 rounded-full animate-dot" style={{ animationDelay: '-8s' }} />
         </div>
       </div>
     </Router>

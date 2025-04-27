@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import { supportedLanguages } from '../services/translation';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -22,6 +26,11 @@ const Navbar: React.FC = () => {
     }, 300);
   };
 
+  const handleLanguageChange = async (languageCode: string) => {
+    await i18n.changeLanguage(languageCode);
+    setIsLanguageMenuOpen(false);
+  };
+
   // 配置 NProgress
   useEffect(() => {
     NProgress.configure({
@@ -33,6 +42,21 @@ const Navbar: React.FC = () => {
       trickleSpeed: 200,
     });
   }, []);
+
+  const getNavText = (path: string) => {
+    switch (path) {
+      case '/':
+        return t('nav.profile');
+      case '/portfolio':
+        return t('nav.portfolio');
+      case '/about':
+        return t('nav.about');
+      case '/contact':
+        return t('nav.contact');
+      default:
+        return '';
+    }
+  };
 
   return (
     <nav className="bg-white/5 backdrop-blur-lg border-b border-white/10">
@@ -62,13 +86,42 @@ const Navbar: React.FC = () => {
                   }}
                   className={`nav-link ${isActive(path) ? 'text-primary' : ''} text-sm font-bold`}
                 >
-                  {path === '/' && '个人资料'}
-                  {path === '/portfolio' && '作品集'}
-                  {path === '/about' && '关于ORCIRCLE'}
-                  {path === '/contact' && '联系我'}
+                  {getNavText(path)}
                 </Link>
               </motion.div>
             ))}
+            
+            {/* 语言选择下拉菜单 */}
+            <div className="relative">
+              <motion.button
+                onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+                className="text-sm font-bold text-gray-300 hover:text-white"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t('nav.language')}
+              </motion.button>
+              {isLanguageMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute right-0 mt-2 w-48 bg-white/10 backdrop-blur-md rounded-md shadow-lg py-1"
+                >
+                  {supportedLanguages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code)}
+                      className={`block w-full text-left px-4 py-2 text-sm ${
+                        i18n.language === lang.code ? 'text-primary' : 'text-gray-300 hover:text-white'
+                      }`}
+                    >
+                      {lang.name}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </div>
           </div>
 
           {/* 移动端菜单按钮 */}
@@ -81,7 +134,7 @@ const Navbar: React.FC = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <span className="sr-only">打开主菜单</span>
+            <span className="sr-only">{t('nav.menu')}</span>
             <AnimatePresence mode="wait">
               {isMenuOpen ? (
                 <motion.svg
@@ -157,13 +210,40 @@ const Navbar: React.FC = () => {
                       isActive(path) ? 'text-primary' : 'text-gray-300 hover:text-white hover:bg-gray-700'
                     }`}
                   >
-                    {path === '/' && '个人资料'}
-                    {path === '/portfolio' && '作品集'}
-                    {path === '/about' && '关于ORCIRCLE'}
-                    {path === '/contact' && '联系我'}
+                    {getNavText(path)}
                   </Link>
                 </motion.div>
               ))}
+              
+              {/* 移动端语言选择 */}
+              <div className="relative">
+                <motion.button
+                  onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+                >
+                  {t('nav.language')}
+                </motion.button>
+                {isLanguageMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="mt-2 space-y-1"
+                  >
+                    {supportedLanguages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => handleLanguageChange(lang.code)}
+                        className={`block w-full text-left px-3 py-2 text-sm ${
+                          i18n.language === lang.code ? 'text-primary' : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        {lang.name}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </div>
             </div>
           </motion.div>
         )}

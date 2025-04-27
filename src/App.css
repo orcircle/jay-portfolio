@@ -61,26 +61,18 @@
   }
 
   /* 圆形动画 */
-  @keyframes circleMove {
+  @keyframes circle {
     0% {
-      transform: translate(0, 0) scale(1) rotate(0deg);
-      opacity: 0.5;
-    }
-    25% {
-      transform: translate(50vw, 25vh) scale(1.2) rotate(90deg);
-      opacity: 0.7;
+      transform: translate(0, 0) scale(1);
+      opacity: 0.3;
     }
     50% {
-      transform: translate(25vw, 50vh) scale(0.8) rotate(180deg);
-      opacity: 0.9;
-    }
-    75% {
-      transform: translate(-50vw, 25vh) scale(1.1) rotate(270deg);
-      opacity: 0.6;
+      transform: translate(50px, 50px) scale(1.2);
+      opacity: 0.5;
     }
     100% {
-      transform: translate(0, 0) scale(1) rotate(360deg);
-      opacity: 0.1;
+      transform: translate(0, 0) scale(1);
+      opacity: 0.3;
     }
   }
 
@@ -109,55 +101,40 @@
   }
 
   /* 方形动画 */
-  @keyframes squareMove {
+  @keyframes square {
     0% {
-      transform: translate(0, 0) rotate(45deg) scale(1);
-      opacity: 0.5;
-    }
-    25% {
-      transform: translate(50vw, -25vh) rotate(90deg) scale(1.2);
-      opacity: 0.7;
+      transform: rotate(0deg) scale(1);
+      opacity: 0.3;
     }
     50% {
-      transform: translate(25vw, 50vh) rotate(180deg) scale(0.8);
-      opacity: 0.9;
-    }
-    75% {
-      transform: translate(-50vw, 25vh) rotate(270deg) scale(1.1);
-      opacity: 0.6;
+      transform: rotate(180deg) scale(1.2);
+      opacity: 0.5;
     }
     100% {
-      transform: translate(0, 0) rotate(45deg) scale(1);
-      opacity: 0.1;
+      transform: rotate(360deg) scale(1);
+      opacity: 0.3;
     }
   }
 
   /* 点动画 */
-  @keyframes dotMove {
+  @keyframes dot {
     0% {
       transform: translate(0, 0) scale(1);
-      opacity: 0.5;
-    }
-    25% {
-      transform: translate(75vw, 50vh) scale(1.5);
-      opacity: 0.7;
+      opacity: 0.3;
     }
     50% {
-      transform: translate(-50vw, 75vh) scale(0.8);
-      opacity: 0.9;
-    }
-    75% {
-      transform: translate(-75vw, -50vh) scale(1.2);
-      opacity: 0.6;
+      transform: translate(30px, 30px) scale(1.5);
+      opacity: 0.5;
     }
     100% {
       transform: translate(0, 0) scale(1);
-      opacity: 0.1;
+      opacity: 0.3;
     }
   }
 
   .animate-circle {
-    animation: circleMove 12s infinite;
+    animation: circle 15s ease-in-out infinite;
+    will-change: transform, opacity;
   }
 
   .animate-triangle {
@@ -165,11 +142,13 @@
   }
 
   .animate-square {
-    animation: squareMove 18s infinite;
+    animation: square 20s linear infinite;
+    will-change: transform, opacity;
   }
 
   .animate-dot {
-    animation: dotMove 20s infinite;
+    animation: dot 10s ease-in-out infinite;
+    will-change: transform, opacity;
   }
 }
 
@@ -221,5 +200,32 @@
     display: block;
     height: -20%;
     scroll-snap-align: start;
+  }
+}
+
+/* 优化滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 优化移动端性能 */
+@media (max-width: 768px) {
+  .animate-circle,
+  .animate-square,
+  .animate-dot {
+    animation-duration: 30s;
   }
 }

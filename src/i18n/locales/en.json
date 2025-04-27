@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "profile": "Profile",
+    "portfolio": "Portfolio",
+    "about": "About ORCIRCLE",
+    "contact": "Contact Me",
+    "menu": "Open main menu",
+    "language": "Language",
+    "switchTo": "Switch to"
+  },
+  "greeting": "Hello, I'm Jay Yuan",
+  "roles": {
+    "frontend": "Frontend Developer",
+    "uiux": "UI/UX Designer",
+    "creative": "Creative Worker",
+    "learner": "Lifelong Learner"
+  },
+  "about": "About Me",
+  "basicUnit":{
+    "year": "years",
+    "month": "months",
+    "day": "days"
+  },
+  "basicInfo": {
+    "name": "Name",
+    "gender": "Gender",
+    "age": "Age",
+    "hometown": "Hometown",
+    "wechat": "WeChat",
+    "email": "Email",
+    "worktime": "Work Time"
+  },
+  "skills": {
+    "title": "Skills",
+    "backend": "Backend Technologies",
+    "frontend": "Frontend Technologies",
+    "devops": "DevOps Skills",
+    "strengths": {
+      "title": "Personal Strengths",
+      "backend": {
+        "title": "Backend Technology Stack",
+        "content": "Possess solid JavaSE and JavaEE technical foundation, proficient in using SpringBoot and SpringCloud frameworks for project development. Have experience with distributed databases, deep understanding and application capabilities of Mybatis, as well as practical experience in database index optimization and MQ queue consumption/push. Skilled in using Redis clusters for data management. Have experience in project development under high availability and high concurrency scenarios."
+      },
+      "frontend": {
+        "title": "Frontend Technology Stack",
+        "content": "Deep understanding and application capabilities of frontend technologies such as JavaScript, Vue, Vuex, React, Redux, ReactRouter, and Next.js. Familiar with mainstream frontend technology stacks. Also have exposure to mobile development technologies like ReactNative and Flutter, with some understanding of programming languages like Dart and TypeScript."
+      },
+      "devops": {
+        "title": "DevOps Capabilities",
+        "content": "Master basic usage and management of Linux operating system, possess Docker deployment and cloud service deployment capabilities. Familiar with operations on mainstream cloud service platforms like AWS, Azure, and Alibaba Cloud. Can achieve seamless integration between OSS and cloud servers, and improve system performance and user experience through static project CDN acceleration."
+      }
+    }
+  },
+  "values": {
+    "name": "Jay Yuan",
+    "gender": "Male",
+    "age": "24",
+    "hometown": "Suzhou",
+    "wechat": "19522716628",
+    "email": "yuanjie1224@gmail.com"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "My Recent Works",
+    "projects": {
+      "project1": {
+        "title": "Project One",
+        "description": "A project developed with React and TypeScript",
+        "technologies": ["React", "TypeScript", "Tailwind CSS"]
+      },
+      "project2": {
+        "title": "Project Two",
+        "description": "A project developed with Vue and Node.js",
+        "technologies": ["Vue", "Node.js", "MongoDB"]
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "description": "Get in Touch",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "Your Message",
+      "submit": "Send Message"
+    }
+  },
+  "aboutPage": {
+    "title": "About ORCIRCLE",
+    "subtitle": "Exploring Infinite Creative Space",
+    "intro": {
+      "title": "Website Introduction",
+      "content": "ORCIRCLE is a creative and vibrant personal portfolio platform dedicated to providing creators with a space to showcase themselves and share their work. Here, we believe every creative idea deserves to be seen and every story deserves to be told."
+    },
+    "design": {
+      "title": "Design Philosophy",
+      "content": "ORCIRCLE's design philosophy stems from the pursuit of balance between simplicity and functionality. We believe that excellent design should be both beautiful and practical, both attracting users' attention and providing a smooth user experience. Through carefully designed interfaces and interactions, we strive to create a pleasant browsing environment for users."
+    },
+    "tech": {
+      "title": "Technical Features",
+      "frontend": {
+        "title": "Frontend Technologies",
+        "items": [
+          "React + TypeScript",
+          "Tailwind CSS",
+          "Framer Motion",
+          "Responsive Design"
+        ]
+      },
+      "performance": {
+        "title": "Performance Optimization",
+        "items": [
+          "Code Splitting",
+          "Lazy Loading",
+          "Performance Monitoring",
+          "SEO Optimization"
+        ]
+      }
+    },
+    "future": {
+      "title": "Future Outlook",
+      "content": "ORCIRCLE will continue to update and optimize to bring users a better experience. We plan to add more features, including work comment system, user interaction features, work category browsing, etc. Meanwhile, we will continuously optimize website performance to ensure fast loading and smooth operation."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "intro": "If you have any questions, suggestions, or cooperation intentions, please contact us through the following ways:",
+      "email": "Email: contact@orcircle.com",
+      "wechat": "WeChat: ORCIRCLE",
+      "github": "GitHub: github.com/orcircle"
+    }
+  }
+} 
