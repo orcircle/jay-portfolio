@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Title from '../components/Title';
@@ -9,9 +9,6 @@ import Typewriter from '../components/Typewriter';
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
-  const contentRef = useRef<HTMLDivElement>(null);
-  const isScrolling = useRef(false);
-  const touchStartY = useRef(0);
 
   const basicInfo = [
     { label: t('basicInfo.name'), value: t('values.name') },
@@ -29,75 +26,9 @@ const Home: React.FC = () => {
     { label: t('skills.devops'), value: 'Linux, Docker, AWS, Azure, 阿里云' }
   ];
 
-  const scrollToSection = (targetY: number) => {
-    if (isScrolling.current) return;
-    
-    isScrolling.current = true;
-    window.scrollTo({
-      top: targetY,
-      behavior: 'smooth'
-    });
-    
-    setTimeout(() => {
-      isScrolling.current = false;
-    }, 1000);
-  };
-
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      if (isScrolling.current) return;
-      
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      
-      // 如果在第一屏（0px）向下滚动
-      if (scrollPosition < viewportHeight / 2 && e.deltaY > 0) {
-        e.preventDefault();
-        scrollToSection(viewportHeight);
-      }
-      // 如果在第二屏顶部（100vh）向上滚动
-      else if (scrollPosition > viewportHeight / 2 && e.deltaY < 0) {
-        e.preventDefault();
-        scrollToSection(0);
-      }
-    };
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY.current = e.touches[0].clientY;
-    };
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      if (isScrolling.current) return;
-      
-      const touchEndY = e.changedTouches[0].clientY;
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      const deltaY = touchEndY - touchStartY.current;
-      
-      // 如果在第一屏（0px）向下滑动
-      if (scrollPosition < viewportHeight / 2 && deltaY < -50) {
-        scrollToSection(viewportHeight);
-      }
-      // 如果在第二屏顶部（100vh）向上滑动
-      else if (scrollPosition > viewportHeight / 2 && deltaY > 50) {
-        scrollToSection(0);
-      }
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd, { passive: true });
-    
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
-
   return (
     <div className="min-h-screen">
-      {/* 标题部分 */}
+      {/* 首屏内容 */}
       <div className="h-screen flex items-center justify-center">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -119,8 +50,8 @@ const Home: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* 内容部分 */}
-      <div ref={contentRef} className="min-h-screen mt-16">
+      {/* 关于我部分 */}
+      <div className="min-h-screen pt-20 flex flex-col">
         {/* 个人信息和介绍 */}
         <motion.div 
           initial={{ opacity: 0 }}
