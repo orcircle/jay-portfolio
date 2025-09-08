@@ -201,33 +201,107 @@
     }
   }
 
-  .animate-circle {
-    animation: circle 20s ease-in-out infinite;
+  /* 高科技多彩云动画类 */
+  .animate-cloud-drift-1 {
+    animation: cloud-drift-1 20s ease-in-out infinite;
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+  }
+
+  .animate-cloud-drift-2 {
+    animation: cloud-drift-2 25s ease-in-out infinite;
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+  }
+
+  .animate-cloud-pulse-1 {
+    animation: cloud-pulse-1 18s ease-in-out infinite;
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+  }
+
+  .animate-cloud-float-1 {
+    animation: cloud-float-1 22s ease-in-out infinite;
     will-change: transform, opacity;
+    transform: translateZ(0);
   }
 
-  .animate-triangle {
-    animation: triangleMove 25s ease-in-out infinite;
+  .animate-cloud-float-2 {
+    animation: cloud-float-2 16s ease-in-out infinite;
     will-change: transform, opacity;
+    transform: translateZ(0);
   }
 
-  .animate-square {
-    animation: square 22s ease-in-out infinite;
+  .animate-glow-pulse-1 {
+    animation: glow-pulse-1 12s ease-in-out infinite;
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+  }
+
+  .animate-glow-pulse-2 {
+    animation: glow-pulse-2 14s ease-in-out infinite;
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+  }
+
+  .animate-flow-light-1 {
+    animation: flow-light-1 8s ease-in-out infinite;
     will-change: transform, opacity;
+    transform: translateZ(0);
   }
 
-  .animate-dot {
-    animation: dot 18s ease-in-out infinite;
+  .animate-flow-light-2 {
+    animation: flow-light-2 10s ease-in-out infinite;
     will-change: transform, opacity;
+    transform: translateZ(0);
   }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  /* 新增融合云团动画类 */
+  .animate-cloud-drift-3 {
+    animation: cloud-drift-3 28s ease-in-out infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0);
   }
 
-  .animate-pulse {
-    animation: pulse 4s ease-in-out infinite;
+  .animate-cloud-drift-4 {
+    animation: cloud-drift-4 24s ease-in-out infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0);
   }
+
+  .animate-cloud-pulse-2 {
+    animation: cloud-pulse-2 15s ease-in-out infinite;
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+  }
+
+  .animate-cloud-flow-1 {
+    animation: cloud-flow-1 30s ease-in-out infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+
+  .animate-glow-pulse-3 {
+    animation: glow-pulse-3 13s ease-in-out infinite;
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+  }
+
+  .animate-flow-light-3 {
+    animation: flow-light-3 12s ease-in-out infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+
+  /* 文本截断支持 */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* 清理旧动画定义 */
 }
 
 @layer components {
@@ -299,11 +373,402 @@
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* 优化移动端性能 */
+/* 优化移动端性能和体验 */
 @media (max-width: 768px) {
-  .animate-circle,
-  .animate-square,
-  .animate-dot {
-    animation-duration: 30s;
+  /* 简化高科技云动画在移动端 */
+  .animate-cloud-drift-1,
+  .animate-cloud-drift-2 {
+    animation-duration: 30s; /* 减慢速度减少GPU负载 */
+    filter: blur(24px) !important; /* 增加模糊减少细节渲染 */
+  }
+  
+  .animate-cloud-pulse-1 {
+    animation-duration: 25s;
+    filter: blur(20px) !important;
+  }
+  
+  .animate-cloud-float-1,
+  .animate-cloud-float-2 {
+    animation-duration: 28s;
+    filter: blur(18px) !important;
+  }
+  
+  .animate-glow-pulse-1,
+  .animate-glow-pulse-2 {
+    animation-duration: 20s;
+  }
+  
+  .animate-flow-light-1,
+  .animate-flow-light-2 {
+    animation-duration: 15s;
+  }
+
+  /* Portfolio卡片移动端优化 */
+  .portfolio-card {
+    /* 移除hover效果，使用active状态 */
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+  
+  .portfolio-card:active {
+    transform: scale(0.98) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* 移动端模态框优化 - 简化版本 */
+  @media (max-width: 768px) {
+    /* 确保模态框在移动端完全居中，没有左右黑边 */
+    .mobile-modal-container {
+      padding: 1rem !important;
+    }
+    
+    /* 移动端标题调整 */
+    .mobile-modal-title {
+      font-size: 1.25rem !important;
+      line-height: 1.75rem !important;
+    }
+    
+    /* 移动端公司图标调整 */
+    .mobile-modal-icon {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      font-size: 1.25rem !important;
+    }
+  }
+  
+  /* 移动端touch优化 */
+  .touch-target {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+  
+  /* 防止文本选择 */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
+
+/* 减少动画对于偏好减少运动的用户 */
+@media (prefers-reduced-motion: reduce) {
+  .animate-cloud-drift-1,
+  .animate-cloud-drift-2,
+  .animate-cloud-pulse-1,
+  .animate-cloud-float-1,
+  .animate-cloud-float-2 {
+    animation: none;
+    opacity: 0.4 !important;
+  }
+  
+  .animate-glow-pulse-1,
+  .animate-glow-pulse-2 {
+    animation: none;
+    opacity: 0.6 !important;
+  }
+  
+  .animate-flow-light-1,
+  .animate-flow-light-2 {
+    animation: none;
+    opacity: 0.3 !important;
+  }
+}
+
+/* 高科技多彩云动画关键帧 */
+
+/* 主要云团漂移动画 */
+@keyframes cloud-drift-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translate3d(-20px, -15px, 0) scale(1.1) rotate(2deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate3d(10px, -25px, 0) scale(0.95) rotate(-1deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate3d(15px, -10px, 0) scale(1.05) rotate(1.5deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes cloud-drift-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translate3d(25px, 20px, 0) scale(0.9) rotate(-2deg);
+    opacity: 0.9;
+  }
+  60% {
+    transform: translate3d(-15px, 30px, 0) scale(1.15) rotate(1deg);
+    opacity: 0.5;
+  }
+  90% {
+    transform: translate3d(-30px, 10px, 0) scale(1.02) rotate(-0.5deg);
+    opacity: 0.8;
+  }
+}
+
+/* 云团脉冲动画 */
+@keyframes cloud-pulse-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.6;
+    filter: blur(48px) hue-rotate(0deg) brightness(1); /* 保持模糊效果 */
+  }
+  33% {
+    transform: translate3d(-10px, -20px, 0) scale(1.2);
+    opacity: 0.8;
+    filter: blur(48px) hue-rotate(30deg) brightness(1.2); /* 保持模糊效果 */
+  }
+  66% {
+    transform: translate3d(15px, -10px, 0) scale(0.85);
+    opacity: 0.4;
+    filter: blur(48px) hue-rotate(-20deg) brightness(0.9); /* 保持模糊效果 */
+  }
+}
+
+/* 辅助云团浮动 */
+@keyframes cloud-float-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.7;
+  }
+  40% {
+    transform: translate3d(-25px, -30px, 0) scale(1.1);
+    opacity: 0.9;
+  }
+  70% {
+    transform: translate3d(20px, -20px, 0) scale(0.9);
+    opacity: 0.5;
+  }
+}
+
+@keyframes cloud-float-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate3d(30px, -25px, 0) scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+/* 光点脉冲动画 */
+@keyframes glow-pulse-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.8;
+    filter: brightness(1) blur(16px);
+  }
+  25% {
+    transform: translate3d(-10px, -15px, 0) scale(1.3);
+    opacity: 1;
+    filter: brightness(1.5) blur(20px);
+  }
+  50% {
+    transform: translate3d(5px, -8px, 0) scale(0.7);
+    opacity: 0.4;
+    filter: brightness(0.8) blur(12px);
+  }
+  75% {
+    transform: translate3d(8px, -20px, 0) scale(1.1);
+    opacity: 0.9;
+    filter: brightness(1.2) blur(18px);
+  }
+}
+
+@keyframes glow-pulse-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.7;
+    filter: brightness(1) blur(14px);
+  }
+  40% {
+    transform: translate3d(15px, -12px, 0) scale(1.4);
+    opacity: 1;
+    filter: brightness(1.6) blur(22px);
+  }
+  80% {
+    transform: translate3d(-8px, -25px, 0) scale(0.8);
+    opacity: 0.5;
+    filter: brightness(0.9) blur(10px);
+  }
+}
+
+/* 流光动画 */
+@keyframes flow-light-1 {
+  0% {
+    transform: translate3d(-100px, 0, 0) scaleX(0.5);
+    opacity: 0;
+  }
+  20% {
+    transform: translate3d(-20px, -5px, 0) scaleX(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate3d(50px, -10px, 0) scaleX(1.5);
+    opacity: 0.6;
+  }
+  80% {
+    transform: translate3d(120px, -5px, 0) scaleX(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate3d(200px, 0, 0) scaleX(0.2);
+    opacity: 0;
+  }
+}
+
+@keyframes flow-light-2 {
+  0% {
+    transform: translate3d(150px, 0, 0) scaleX(0.3);
+    opacity: 0;
+  }
+  30% {
+    transform: translate3d(80px, 8px, 0) scaleX(1.2);
+    opacity: 0.7;
+  }
+  60% {
+    transform: translate3d(-20px, 15px, 0) scaleX(1.6);
+    opacity: 0.5;
+  }
+  90% {
+    transform: translate3d(-100px, 8px, 0) scaleX(0.8);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate3d(-180px, 0, 0) scaleX(0.1);
+    opacity: 0;
+  }
+}
+
+/* 新增融合云团动画关键帧 */
+@keyframes cloud-drift-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  20% {
+    transform: translate3d(15px, -20px, 0) scale(1.05) rotate(1deg);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translate3d(-10px, -30px, 0) scale(0.95) rotate(-1.5deg);
+    opacity: 0.5;
+  }
+  60% {
+    transform: translate3d(20px, -15px, 0) scale(1.1) rotate(0.5deg);
+    opacity: 0.7;
+  }
+  80% {
+    transform: translate3d(-5px, -25px, 0) scale(1.02) rotate(-1deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes cloud-drift-4 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translate3d(-20px, 15px, 0) scale(0.9) rotate(2deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(10px, 25px, 0) scale(1.15) rotate(-1.5deg);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate3d(-25px, 10px, 0) scale(1.05) rotate(1deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes cloud-pulse-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+    filter: blur(32px) hue-rotate(0deg) brightness(1);
+  }
+  30% {
+    transform: translate3d(-15px, -10px, 0) scale(1.3);
+    opacity: 0.8;
+    filter: blur(32px) hue-rotate(45deg) brightness(1.3);
+  }
+  70% {
+    transform: translate3d(20px, -5px, 0) scale(0.8);
+    opacity: 0.3;
+    filter: blur(32px) hue-rotate(-30deg) brightness(0.8);
+  }
+}
+
+@keyframes cloud-flow-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translate3d(-30px, -20px, 0) scale(1.1);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translate3d(25px, -35px, 0) scale(0.9);
+    opacity: 0.6;
+  }
+}
+
+@keyframes glow-pulse-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.6;
+    filter: brightness(1) blur(16px);
+  }
+  30% {
+    transform: translate3d(-12px, -18px, 0) scale(1.4);
+    opacity: 1;
+    filter: brightness(1.4) blur(24px);
+  }
+  60% {
+    transform: translate3d(8px, -10px, 0) scale(0.8);
+    opacity: 0.3;
+    filter: brightness(0.7) blur(10px);
+  }
+  85% {
+    transform: translate3d(10px, -25px, 0) scale(1.2);
+    opacity: 0.8;
+    filter: brightness(1.1) blur(20px);
+  }
+}
+
+@keyframes flow-light-3 {
+  0% {
+    transform: translate3d(-120px, 20px, 0) scaleX(0.4);
+    opacity: 0;
+  }
+  25% {
+    transform: translate3d(-40px, 10px, 0) scaleX(1.3);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate3d(60px, 0px, 0) scaleX(1.8);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate3d(140px, 10px, 0) scaleX(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate3d(220px, 20px, 0) scaleX(0.2);
+    opacity: 0;
   }
 }

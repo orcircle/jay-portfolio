@@ -23,12 +23,15 @@ const Navbar: React.FC = () => {
       navigate(path);
       setIsMenuOpen(false);
       NProgress.done();
+      // ScrollToTop组件会自动处理滚动重置
     }, 300);
   };
 
   const handleLanguageChange = async (languageCode: string) => {
     await i18n.changeLanguage(languageCode);
     setIsLanguageMenuOpen(false);
+    // 移动端切换语言后关闭整个菜单
+    setIsMenuOpen(false);
   };
 
   // 配置 NProgress
@@ -106,14 +109,14 @@ const Navbar: React.FC = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute right-0 mt-2 w-48 bg-white/10 backdrop-blur-md rounded-md shadow-lg py-1"
+                  className="absolute right-0 mt-2 w-48 bg-gray-900/95 backdrop-blur-xl border border-gray-700/50 rounded-md shadow-2xl py-1"
                 >
                   {supportedLanguages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => handleLanguageChange(lang.code)}
-                      className={`block w-full text-left px-4 py-2 text-sm ${
-                        i18n.language === lang.code ? 'text-primary' : 'text-gray-300 hover:text-white'
+                      className={`block w-full text-left px-4 py-2 text-sm transition-colors rounded ${
+                        i18n.language === lang.code ? 'text-primary bg-primary/10' : 'text-gray-100 hover:text-white hover:bg-gray-700/50'
                       }`}
                     >
                       {lang.name}
@@ -234,8 +237,8 @@ const Navbar: React.FC = () => {
                       <button
                         key={lang.code}
                         onClick={() => handleLanguageChange(lang.code)}
-                        className={`block w-full text-left px-3 py-2 text-sm ${
-                          i18n.language === lang.code ? 'text-primary' : 'text-gray-300 hover:text-white'
+                        className={`block w-full text-left px-3 py-2 text-sm transition-colors rounded ${
+                          i18n.language === lang.code ? 'text-primary bg-primary/10' : 'text-gray-100 hover:text-white hover:bg-gray-700/30'
                         }`}
                       >
                         {lang.name}

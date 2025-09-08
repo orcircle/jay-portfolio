@@ -13,7 +13,11 @@
     "frontend": "Frontend Developer",
     "uiux": "UI/UX Designer",
     "creative": "Creative Worker",
-    "learner": "Lifelong Learner"
+    "learner": "Lifelong Learner",
+    "fullstack": "Full-Stack Software Engineer",
+    "java": "Java Developer",
+    "microservice": "Microservices Architect",
+    "backend": "Backend Specialist"
   },
   "about": "About Me",
   "basicUnit":{
@@ -28,7 +32,10 @@
     "hometown": "Hometown",
     "wechat": "WeChat",
     "email": "Email",
-    "worktime": "Work Time"
+    "worktime": "Work Time",
+    "resume": "Online Resume",
+    "position": "Position",
+    "location": "Location"
   },
   "skills": {
     "title": "Skills",
@@ -36,42 +43,214 @@
     "frontend": "Frontend Technologies",
     "devops": "DevOps Skills",
     "strengths": {
-      "title": "Personal Strengths",
+      "title": "Technical Skills Matrix",
       "backend": {
-        "title": "Backend Technology Stack",
-        "content": "Possess solid JavaSE and JavaEE technical foundation, proficient in using SpringBoot and SpringCloud frameworks for project development. Have experience with distributed databases, deep understanding and application capabilities of Mybatis, as well as practical experience in database index optimization and MQ queue consumption/push. Skilled in using Redis clusters for data management. Have experience in project development under high availability and high concurrency scenarios."
+        "title": "Backend / Platform",
+        "expert": "Java (JDK8+), Spring Boot, Spring Cloud (Eureka), Spring Security",
+        "proficient": "Python (FastAPI), Go (Gin framework), Node.js (MES projects)"
+      },
+      "data": {
+        "title": "Data Layer",
+        "proficient": "MySQL, ORM/native database drivers, sharding, index & execution plan optimization; Redis (Cluster, key space design, hotspot & memory management)"
+      },
+      "middleware": {
+        "title": "Middleware",
+        "proficient": "RabbitMQ, MQTT (industrial control/M2M scenarios)",
+        "familiar": "ElasticJob (distributed scheduling/sharding)"
       },
       "frontend": {
-        "title": "Frontend Technology Stack",
-        "content": "Deep understanding and application capabilities of frontend technologies such as JavaScript, Vue, Vuex, React, Redux, ReactRouter, and Next.js. Familiar with mainstream frontend technology stacks. Also have exposure to mobile development technologies like ReactNative and Flutter, with some understanding of programming languages like Dart and TypeScript."
+        "title": "Frontend / Cross-platform",
+        "proficient": "TypeScript/JavaScript, Vue (Vuex), React (Redux/Router)",
+        "familiar": "Next.js, Flutter, React Native"
       },
       "devops": {
-        "title": "DevOps Capabilities",
-        "content": "Master basic usage and management of Linux operating system, possess Docker deployment and cloud service deployment capabilities. Familiar with operations on mainstream cloud service platforms like AWS, Azure, and Alibaba Cloud. Can achieve seamless integration between OSS and cloud servers, and improve system performance and user experience through static project CDN acceleration."
+        "title": "DevOps / Cloud",
+        "proficient": "Linux, Docker, Nginx, Jenkins, Git; Alibaba Cloud (ECS/OSS/RDS/VOD), familiar with AWS/Azure basics"
+      },
+      "engineering": {
+        "title": "Engineering Practices",
+        "proficient": "REST design, contract-first & API versioning, idempotency/retry/compensation, canary/circuit breaker/rate limiting, JUnit/integration testing, performance testing & APM, logging & alerting"
       }
     }
   },
   "values": {
-    "name": "Jay Yuan",
+    "name": "Jay Yuan (袁杰)",
     "gender": "Male",
-    "age": "24",
+    "age": "25",
     "hometown": "Suzhou",
     "wechat": "19522716628",
-    "email": "yuanjie1224@gmail.com"
+    "email": "jieyuanprivate@gmail.com",
+    "title": "Senior Software Engineer",
+    "resumeUrl": "resume.orcircle.com"
   },
   "portfolio": {
     "title": "Portfolio",
-    "description": "My Recent Works",
-    "projects": {
-      "project1": {
-        "title": "Project One",
-        "description": "A project developed with React and TypeScript",
-        "technologies": ["React", "TypeScript", "Tailwind CSS"]
+    "description": "Major Project Experience & Technical Practice",
+    "viewDetails": "View Details",
+    "hideDetails": "Hide Details",
+    "clickToView": "Click to view details",
+    "projectIntro": "Project Overview", 
+    "responsibilities": "Key Responsibilities",
+    "techPoints": "Technical Highlights",
+    "achievements": "Project Achievements",
+    "fullTechStack": "Full Tech Stack",
+    "close": "Close",
+    "companies": {
+      "kulicke_soffa": {
+        "name": "Kulicke & Soffa Semiconductor (Suzhou) Co., Ltd.",
+        "type": "US Company · Full English Environment",
+        "position": "Full-Stack Software Engineer",
+        "period": "2024.07 – Present",
+        "projects": {
+          "opcenter": {
+            "title": "OP Center (MES Core Platform) Refactoring & Maintenance",
+            "description": "OP Center serves as the central MES hub for packaging production lines (Ball Bonder/Wire Bonder/AS/APMR, etc.).",
+            "responsibilities": ["Core Development", "Responsible for modernizing key modules including management UI, dictionary management, Redis Resource Group"],
+            "techPoints": [
+              "Backend: Node.js + ORM/native database drivers; domain separation, interface contract convergence, exception/audit log standardization",
+              "Caching: Redis read/write path optimization and hot key management; unified grouping/expiration policies and TTL",
+              "Frontend: Component refactoring and state management reorganization, abstraction of common modules like forms/dictionaries/permissions"
+            ],
+            "achievements": ["Improved interaction response and maintainability", "Reduced cross-module coupling", "Supported rapid iteration and risk control audit alignment"],
+            "technologies": ["Node.js", "Redis", "ORM", "Component Refactoring", "State Management"]
+          },
+          "mqtt_gateway": {
+            "title": "AutoBBMQTT (Real-time M2M Message Gateway)",
+            "description": "Low-latency, high-reliability message hub between devices ↔ MES ↔ other subsystems.",
+            "responsibilities": ["Architecture & Implementation (Independent Design & Development)"],
+            "techPoints": [
+              "Protocol: MQTT topic management (naming conventions/permissions), connection lifecycle and session state management",
+              "Stack: Go + Gin framework, leveraging goroutine concurrency and channel pipelines for peak message throughput",
+              "Integration: Interface reconciliation and delivery confirmation with MES/subsystems (ACK/replay); failure retry and idempotency assurance",
+              "Reliability: Offline messaging and flow control strategies, degradation and alert closed-loop (exception path observation)"
+            ],
+            "achievements": ["Stably handles production line equipment message peaks", "Supports real-time data lake ingestion and process event triggering"],
+            "technologies": ["Go", "Gin Framework", "MQTT", "Goroutine Concurrency", "Channel Pipelines"]
+          },
+          "bb_processor": {
+            "title": "BB Processor (Production Data Parsing Microservice)",
+            "description": "Converts complex machine raw data into structured production data for traceability, yield analysis, and process optimization.",
+            "responsibilities": ["Design, development, deployment and horizontal scaling"],
+            "techPoints": [
+              "Stack: Python + FastAPI; high-concurrency I/O parsing pipeline, data cleaning/formatting/aggregation into MES workstations (Station Step)",
+              "Data Quality: Constraint validation, anomaly sample isolation and reprocessing; precise traceability (device/batch/process dimensions)",
+              "Operability: Health checks, timeout/retry strategies, slow path detection, interface performance baseline and regression protection"
+            ],
+            "achievements": ["Converts complex machine raw data into structured production data", "Supports traceability, yield analysis and process optimization"],
+            "technologies": ["Python", "FastAPI", "Data Cleaning", "Format Aggregation", "Microservices"]
+          },
+          "file_processor": {
+            "title": "FileProcessor (Automated Document Generation Microservice)",
+            "description": "Covers automated generation and distribution of various compliance/production documents.",
+            "responsibilities": ["Lead design and implementation"],
+            "techPoints": [
+              "Coverage: TPC (Temporary Process Change List), shipping orders, Star Item List, CheckList, Installation Guideline, etc.",
+              "Technical Features: Template management, parameter validation, batch generation with permission isolation; API-enabled for internal/external system calls"
+            ],
+            "achievements": ["Significantly reduced manual operations and error rates", "Ensured format consistency and audit trails"],
+            "technologies": ["Document Generation", "Template Engine", "API Design", "Permission Control"]
+          }
+        }
       },
-      "project2": {
-        "title": "Project Two",
-        "description": "A project developed with Vue and Node.js",
-        "technologies": ["Vue", "Node.js", "MongoDB"]
+      "shanghai_bank": {
+        "name": "Bank of Shanghai (Suzhou Development Center, Outsourced)",
+        "type": "Banking Industry",
+        "position": "Java Developer", 
+        "period": "2024.03 – 2024.07",
+        "projects": {
+          "legacy_system": {
+            "title": "Legacy Receipt Box System Modernization",
+            "description": "Led legacy system code refactoring and seamless integration with new CTM (Teller Terminal).",
+            "responsibilities": ["Led legacy system code refactoring and seamless integration with new CTM (Teller Terminal)"],
+            "techPoints": [
+              "Compatibility & Migration: Legacy feature migration with adapter layer encapsulation to reduce large-scale regression impact",
+              "Performance & Stability: Data access path and caching strategy optimization, exception isolation and timeout management"
+            ],
+            "achievements": ["Smooth coexistence and evolution of old and new systems", "Significantly improved user experience and maintainability"],
+            "technologies": ["Java", "System Refactoring", "Adapter Layer Design", "Cache Optimization"]
+          }
+        }
+      },
+      "changshu_bank": {
+        "name": "Changshu Rural Commercial Bank (Suzhou Development Center)",
+        "type": "Banking Industry",
+        "position": "Java Developer",
+        "period": "2022.06 – 2024.03",
+    "projects": {
+          "notification_system": {
+            "title": "Core Account Transaction Notification System (High-Concurrency Async Architecture)",
+            "description": "High-concurrency asynchronous architecture, responsible for architecture optimization and performance governance.",
+            "responsibilities": ["Backend Lead", "Responsible for architecture optimization and performance governance"],
+            "techPoints": [
+              "Decoupling: RabbitMQ for async peak shaving, ElasticJob for distributed scheduling/batch processing",
+              "Modules: Three-module collaboration - MQ auto-consumption engine, API subscription module, batch processing service",
+              "Data: Template assembly then push to multiple channels (LanXin/SMS/WeChat); idempotent key design and status writeback"
+            ],
+            "achievements": ["Achieved 300% QPS throughput improvement through architectural decoupling and resource layering", "Resolved master-slave sync delay bottlenecks"],
+            "technologies": ["RabbitMQ", "ElasticJob", "Spring Cloud", "Async Peak Shaving", "Distributed Tasks"]
+          },
+          "core_system": {
+            "title": "Core Public & Customer System (Service Governance & Data Sharding)",
+            "description": "Core module development and availability assurance.",
+            "responsibilities": ["Core module development and availability assurance"],
+            "techPoints": [
+              "Service Governance: Eureka service discovery, instance health checks with canary deployment coordination",
+              "Integration: ESB (Enterprise Service Bus) integration; unified authentication and auditing", 
+              "Data: Customer ID modulo-based sharding scheme, layered archiving around hotspots and large tables"
+            ],
+            "achievements": ["Supports unified services for multiple front-end channels (teller, virtual teller, ATM)", "Significantly improved scalability and horizontal scaling capability"],
+            "technologies": ["Eureka", "ESB", "Database Sharding", "Canary Deployment", "Microservice Governance"]
+          },
+          "customer_module": {
+            "title": "Core Customer Module (Functional Restriction Policies & Blacklist Push)",
+            "description": "Maintaining core module logic for the split customer center.",
+            "responsibilities": ["Maintaining core module logic for the split customer center"],
+            "techPoints": ["Built policy engine around scenarios like expired documents/judicial freezing, linked to blacklist push and risk handling processes"],
+            "achievements": ["Improved risk management system", "Enhanced business processing efficiency"],
+            "technologies": ["Policy Engine", "Risk Control", "Business Rules Engine"]
+          }
+        }
+      },
+      "freelance": {
+        "name": "Freelance · Xiaobei Cultural Studio",
+        "type": "Startup Project",
+        "position": "Full-Stack Engineer",
+        "period": "2020.06 – 2022.06",
+        "projects": {
+          "ad_platform": {
+            "title": "Advertising Promotion & Backend Management Platform (Full-Stack)",
+            "description": "Full-stack advertising platform development, including configurable ad templates and operational backend.",
+            "responsibilities": ["Full-stack development"],
+            "techPoints": [
+              "Frontend: React (configurable ad templates/dynamic landing pages), Vue + Element UI (operational backend)",
+              "Backend: Spring Cloud Netflix microservices; statistics, resource management module separation",
+              "Object Storage/CDN: Alibaba Cloud OSS + CDN acceleration; HTTPS certificates and cross-domain security governance",
+              "Data: Form collection, conversion funnel and basic analysis reports"
+            ],
+            "achievements": ["Complete advertising platform solution", "Supported rapid business growth"],
+            "technologies": ["React", "Vue", "Spring Cloud", "Alibaba Cloud OSS", "CDN", "Element UI"]
+          },
+          "landing_pages": {
+            "title": "Advertising Landing Page System (Frontend Engineering)",
+            "description": "Landing page system with dynamic rendering based on URL ad ID.",
+            "responsibilities": ["Frontend architecture design and implementation"],
+            "techPoints": ["Dynamic rendering based on URL ad ID; Webpack bundling and Nginx deployment; site-level caching and origin pull strategies"],
+            "achievements": ["Improved ad conversion rates", "Supported large-scale ad campaigns"],
+            "technologies": ["Webpack", "Nginx", "Dynamic Rendering", "Caching Strategies"]
+          },
+          "orcircle_edu": {
+            "title": "Orcircle Education (Personal Project · App)",
+            "description": "Complete online education App solution.",
+            "responsibilities": ["Full-stack independent development"],
+            "techPoints": [
+              "Backend: Spring Boot/Cloud, Spring Security, MyBatis-Plus, Redis; Docker deployment on Alibaba Cloud",
+              "Frontend/Client: Flutter (iOS/Android simultaneous delivery), Vue for PC user interface; UmiJS + React for admin interface",
+              "Features: Account/course/playback permission chain, content distribution (including VOD), basic operational features and analytics"
+            ],
+            "achievements": ["Complete education App ecosystem", "iOS/Android dual platform release", "Comprehensive user system"],
+            "technologies": ["Flutter", "Spring Boot", "Vue", "UmiJS", "Docker", "VOD", "MyBatis-Plus"]
+          }
+        }
       }
     }
   },
@@ -87,46 +266,74 @@
   },
   "aboutPage": {
     "title": "About ORCIRCLE",
-    "subtitle": "Exploring Infinite Creative Space",
+    "subtitle": "Personal Technical Projects & Creative Works Showcase",
     "intro": {
-      "title": "Website Introduction",
-      "content": "ORCIRCLE is a creative and vibrant personal portfolio platform dedicated to providing creators with a space to showcase themselves and share their work. Here, we believe every creative idea deserves to be seen and every story deserves to be told."
+      "title": "About ORCIRCLE",
+      "content": "ORCIRCLE is my personal brand for technical and creative projects, representing continuous exploration of technological innovation and visual design. Through combining full-stack development with creative design, I'm committed to creating digital works that are both technically profound and visually appealing."
     },
-    "design": {
-      "title": "Design Philosophy",
-      "content": "ORCIRCLE's design philosophy stems from the pursuit of balance between simplicity and functionality. We believe that excellent design should be both beautiful and practical, both attracting users' attention and providing a smooth user experience. Through carefully designed interfaces and interactions, we strive to create a pleasant browsing environment for users."
+    "services": {
+      "title": "Technical Skills",
+      "content": "Practical experience and technical expertise in full-stack development and creative design",
+      "items": [
+        "Vector Graphics Design & Visual Creativity (Adobe Illustrator)",
+        "Interface Design & Interactive Prototyping (Figma)",
+        "Brand Visual Design & Graphic Creativity",
+        "Full-Stack Web Development (React + Spring Boot)",
+        "Microservices Architecture Design & Implementation",
+        "Database Design & Performance Optimization"
+      ]
+    },
+    "philosophy": {
+      "title": "Technical Philosophy",
+      "content": "I believe the perfect fusion of technology and creativity can create more valuable products. I focus on code quality, user experience, and system performance during development, while enhancing product appeal and usability through visual design. I pursue technical depth while also caring about the visual presentation of my work."
+    },
+    "achievements": {
+      "title": "Project Experience",
+      "items": [
+        "Semiconductor MES System: Go + Node.js microservices architecture handling high-concurrency production data",
+        "Banking Core System: Spring Cloud distributed architecture with 300% QPS performance improvement",
+        "Online Education Platform: React + Flutter cross-platform development with complete app ecosystem",
+        "Creative Design Works: MG animation, UI design, brand visuals and other multimedia projects"
+      ]
     },
     "tech": {
-      "title": "Technical Features",
-      "frontend": {
-        "title": "Frontend Technologies",
+      "title": "Skill Domains",
+      "design": {
+        "title": "Creative Design",
         "items": [
-          "React + TypeScript",
-          "Tailwind CSS",
-          "Framer Motion",
-          "Responsive Design"
+          "Vector Graphics Design (Adobe Illustrator)",
+          "Interface Design & User Experience (Figma)",
+          "Brand Visual Design & Icon Creation",
+          "Design System & Component Library Building"
         ]
       },
-      "performance": {
-        "title": "Performance Optimization",
+      "development": {
+        "title": "Technical Development",
         "items": [
-          "Code Splitting",
-          "Lazy Loading",
-          "Performance Monitoring",
-          "SEO Optimization"
+          "React + TypeScript",
+          "Vue.js Full Stack Development",
+          "Spring Boot Microservices",
+          "Database Design & Optimization"
+        ]
+      },
+      "tools": {
+        "title": "Tool Ecosystem",
+        "items": [
+          "Adobe Illustrator (Vector Graphics Design)",
+          "Figma (Interface Design & Prototyping)",
+          "Cloud Platform Deployment (Alibaba Cloud, AWS)",
+          "Version Control & Collaboration (Git, Docker)"
         ]
       }
     },
-    "future": {
-      "title": "Future Outlook",
-      "content": "ORCIRCLE will continue to update and optimize to bring users a better experience. We plan to add more features, including work comment system, user interaction features, work category browsing, etc. Meanwhile, we will continuously optimize website performance to ensure fast loading and smooth operation."
-    },
-    "contact": {
-      "title": "Contact Us",
-      "intro": "If you have any questions, suggestions, or cooperation intentions, please contact us through the following ways:",
-      "email": "Email: contact@orcircle.com",
-      "wechat": "WeChat: ORCIRCLE",
-      "github": "GitHub: github.com/orcircle"
+    "values": {
+      "title": "Technical Pursuits",
+      "items": [
+        "Code Quality: Focus on code readability, maintainability, and scalability",
+        "Technical Depth: Continuously learn new technologies and deeply understand underlying principles",
+        "User Experience: Optimize user experience from both technical and design perspectives",
+        "Innovation Practice: Apply new technologies to real projects, solving practical problems"
+      ]
     }
   }
 } 

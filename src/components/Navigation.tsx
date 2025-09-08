@@ -21,6 +21,8 @@ const Navigation: React.FC = () => {
   const handleLanguageChange = async (languageCode: string) => {
     await changeLanguage(languageCode);
     setIsLanguageMenuOpen(false);
+    // 移动端切换语言后关闭整个菜单
+    setIsMenuOpen(false);
   };
 
   return (
@@ -86,13 +88,13 @@ const Navigation: React.FC = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1"
+                  className="absolute right-0 mt-2 w-48 bg-gray-900/95 backdrop-blur-xl border border-gray-700/50 rounded-md shadow-2xl py-1"
                 >
                   {supportedLanguages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => handleLanguageChange(lang.code)}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-100 hover:bg-gray-700/50 hover:text-white transition-colors"
                     >
                       {lang.name}
                     </button>
@@ -200,7 +202,7 @@ const Navigation: React.FC = () => {
                     <button
                       key={lang.code}
                       onClick={() => handleLanguageChange(lang.code)}
-                      className="block w-full text-left px-3 py-2 text-sm text-white hover:text-gray-300"
+                      className="block w-full text-left px-3 py-2 text-sm text-gray-100 hover:bg-gray-700/30 hover:text-white rounded transition-colors"
                     >
                       {lang.name}
                     </button>

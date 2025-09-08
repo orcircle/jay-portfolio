@@ -23,12 +23,28 @@ const Contact: React.FC = () => {
 
             <div className="space-y-6">
               <div>
-                <h4 className="text-lg font-semibold mb-2">{t('basicInfo.email')}</h4>
-                <p className="text-gray-300">{t('values.email')}</p>
+                <h4 className="text-lg font-semibold mb-2 flex items-center">
+                  <span className="mr-2">📧</span>{t('basicInfo.email')}
+                </h4>
+                <p className="text-gray-300 break-all">{t('values.email')}</p>
               </div>
               <div>
-                <h4 className="text-lg font-semibold mb-2">{t('basicInfo.wechat')}</h4>
+                <h4 className="text-lg font-semibold mb-2 flex items-center">
+                  <span className="mr-2">💬</span>{t('basicInfo.wechat')}
+                </h4>
                 <p className="text-gray-300">{t('values.wechat')}</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-2 flex items-center">
+                  <span className="mr-2">💼</span>{t('basicInfo.position')}
+                </h4>
+                <p className="text-gray-300">{t('values.title')}</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-2 flex items-center">
+                  <span className="mr-2">📍</span>{t('basicInfo.location')}
+                </h4>
+                <p className="text-gray-300">{t('values.hometown')}</p>
               </div>
             </div>
           </GlassCard>
