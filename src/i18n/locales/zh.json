@@ -80,6 +80,7 @@
     "hometown": "苏州",
     "wechat": "19522716628",
     "email": "jieyuanprivate@gmail.com",
+    "contactEmail": "jieyuanprivate@gmail.com",
     "title": "高级软件工程师",
     "resumeUrl": "resume.orcircle.com"
   },
@@ -261,7 +262,22 @@
       "name": "您的姓名",
       "email": "您的邮箱",
       "message": "您的留言",
-      "submit": "发送消息"
+      "submit": "发送消息",
+      "sending": "发送中...",
+      "success": "消息发送成功！我会尽快回复您。",
+      "error": "消息发送失败，请使用下方的直接发送邮件功能。",
+      "emailjsNotConfigured": "网页邮件服务不可用，请使用直接发送邮件功能。",
+      "required": "此字段为必填项",
+      "emailInvalid": "请输入有效的邮箱地址",
+      "messageMinLength": "留言内容至少需要10个字符"
+    },
+    "alternatives": {
+      "title": "其他联系方式",
+      "directEmail": "直接发送邮件",
+      "directEmailDesc": "打开您的邮件客户端（推荐）",
+      "wechat": "微信联系",
+      "wechatDesc": "复制微信号：{{wechat}}",
+      "copied": "已复制到剪贴板！"
     }
   },
   "aboutPage": {

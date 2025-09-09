@@ -80,6 +80,7 @@
     "hometown": "Suzhou",
     "wechat": "19522716628",
     "email": "jieyuanprivate@gmail.com",
+    "contactEmail": "jieyuanprivate@gmail.com",
     "title": "Senior Software Engineer",
     "resumeUrl": "resume.orcircle.com"
   },
@@ -261,7 +262,22 @@
       "name": "Your Name",
       "email": "Your Email",
       "message": "Your Message",
-      "submit": "Send Message"
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Failed to send message. Please try the direct email option below.",
+      "emailjsNotConfigured": "Web email service not available. Please use the direct email option.",
+      "required": "This field is required",
+      "emailInvalid": "Please enter a valid email address",
+      "messageMinLength": "Message should be at least 10 characters long"
+    },
+    "alternatives": {
+      "title": "Alternative Contact Methods",
+      "directEmail": "Send Direct Email",
+      "directEmailDesc": "Open your email client (recommended)",
+      "wechat": "WeChat Contact",
+      "wechatDesc": "Copy WeChat ID: {{wechat}}",
+      "copied": "Copied to clipboard!"
     }
   },
   "aboutPage": {
